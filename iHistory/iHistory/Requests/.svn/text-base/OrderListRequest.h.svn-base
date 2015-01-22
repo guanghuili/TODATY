@@ -1,0 +1,15 @@
+//
+//  OrderListRequest.h
+//  EKS
+//
+//  Created by ligh on 14/12/9.
+//
+//
+
+#import "ITTASIBaseDataRequest.h"
+#import "MyOrderModel.h"
+
+//我的订单列表
+@interface OrderListRequest : ITTASIBaseDataRequest
+
+@end

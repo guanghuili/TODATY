@@ -1,0 +1,19 @@
+//
+//  ExchangeCouponRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/9.
+//
+//
+
+#import "ExchangeCouponRequest.h"
+
+@implementation ExchangeCouponRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/coupon/exchange";
+}
+
+
+@end

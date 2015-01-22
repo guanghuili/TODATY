@@ -1,0 +1,37 @@
+//
+//  VersonModel.m
+//  EKS
+//
+//  Created by ligh on 14/12/2.
+//
+//
+
+#import "VersionModel.h"
+
+@implementation VersionModel
+
+- (void)dealloc
+{
+    RELEASE_SAFELY(_versionCode);
+    RELEASE_SAFELY(_forceUpgrade);
+    RELEASE_SAFELY(_url);
+    RELEASE_SAFELY(_updateDescribe);
+    [super dealloc];
+}
+
+-(BOOL) hasNew
+{
+    return  APP_VER.floatValue < self.versionCode.floatValue;
+}
+
+-(NSString *)updateDescribe
+{
+    if ([NSString isBlankString:_updateDescribe])
+    {
+        return @"发现新版本 是否更新？";
+    }
+    
+    return _updateDescribe;
+}
+
+@end

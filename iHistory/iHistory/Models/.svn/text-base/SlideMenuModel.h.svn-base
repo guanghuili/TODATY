@@ -1,0 +1,19 @@
+//
+//  SlideMenuModel.h
+//  PMS
+//
+//  Created by ligh on 14-7-14.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+//菜单model
+@interface SlideMenuModel : NSObject
+
+@property (retain,nonatomic) NSString   *title;//显示的标题
+@property (retain,nonatomic) NSString   *normalIconImageName;
+@property (retain,nonatomic) NSString   *selectedIconImageName;
+@property (assign,nonatomic) BOOL       selected;//是否选中
+
+@end

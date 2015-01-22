@@ -1,0 +1,131 @@
+//
+//  UserGuideView.m
+//  EKS
+//
+//  Created by ligh on 14/12/15.
+//
+//
+
+#import "UserGuideView.h"
+
+@interface UserGuideView()<UIScrollViewDelegate>
+{
+    IBOutlet UIScrollView   *_scrollView;
+    UIView                  *_dotsView;
+}
+@end
+
+
+@implementation UserGuideView
+
+- (void)dealloc
+{
+    RELEASE_SAFELY(_scrollView);
+    [super dealloc];
+}
+
+
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    self.backgroundColor =  UIColorFromRGB(239,239,244);
+    
+    UIView *window = KAPP_Delegate.window;
+    self.frame = window.frame;
+    
+    NSArray *pageImages = @[@"yindao1",@"yindao2",@"yindao3"];
+    for (int i = 0;i<pageImages.count;i++)
+    {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*self.width, 0, self.width, self.height)];
+      [imageView setContentMode:UIViewContentModeScaleAspectFill];
+        [imageView setClipsToBounds:YES];
+        imageView.image = UIImageForName(pageImages[i]);
+        [_scrollView addSubview:imageView];
+        [imageView release];
+        
+        if (i == pageImages.count -1)
+        {
+              UIButton *intoAppButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            [intoAppButton setTitle:@"立即体验" forState:UIControlStateNormal];
+              [intoAppButton setBackgroundImage:UIImageForName(@"sheweichangyong_btn") forState:UIControlStateNormal];
+              [intoAppButton setBackgroundImage:UIImageForName(@"sheweichangyong_btn_pre") forState:UIControlStateHighlighted];
+            [_scrollView addSubview:intoAppButton];
+            intoAppButton.frame =  CGRectMake((i*self.width) + (_scrollView.width - 200)/2.0, _scrollView.height - 60, 200, 40);
+            [intoAppButton addTarget:self action:@selector(intoAppAction) forControlEvents:UIControlEventTouchUpInside];
+        }
+    }
+    
+    [self createDotsViewWithPageNumber:pageImages.count];
+    [_scrollView setContentSize:CGSizeMake(pageImages.count * _scrollView.width, 0)];
+}
+
+-(void) createDotsViewWithPageNumber:(NSInteger) pageNumber
+{
+    _dotsView = [[UIView alloc] init];
+    float dotButtonX = 0;
+    for (int i =0;i<pageNumber;i++)
+    {
+        UIButton *dotButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [dotButton setImage:UIImageForName(@"qiehuan1") forState:UIControlStateNormal];
+        [dotButton setImage:UIImageForName(@"qiehuan2") forState:UIControlStateSelected];
+        dotButton.size = CGSizeMake(8, 8);
+        [_dotsView addSubview:dotButton];
+        dotButton.left = dotButtonX + MARGIN_M;
+        dotButtonX = dotButton.right;
+    }
+    _dotsView.backgroundColor = [UIColor clearColor];
+    _dotsView.frame = CGRectMake((self.width-dotButtonX)/2.0, self.height - 80, dotButtonX, 30);
+    [self addSubview:_dotsView];
+    [_dotsView release];
+}
+
+-(void)showGuidViewIfNeed
+{
+    if ([[DataCacheManager sharedManager] hasObjectInCacheByKey:FristUseKey])
+    {
+        return;
+    }
+    
+    [self showGuidView];
+}
+
+-(void)showGuidView
+{
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+    UIView *window = KAPP_Delegate.window;
+    [window addSubview:self];
+}
+
+-(void) intoAppAction
+{
+ 
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    [[DataCacheManager sharedManager] addObject:FristUseKey forKey:FristUseKey];
+    
+    
+    [UIView animateWithDuration:0.4 animations:^{
+        
+        self.alpha = 0;
+        
+    } completion:^(BOOL finished) {
+        
+
+        [self removeFromSuperview];
+    }];
+}
+
+#pragma UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSInteger pageIndex = scrollView.contentOffset.x/_scrollView.width;
+    
+    [_dotsView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        UIButton *dotButton = obj;
+        dotButton.selected = idx == pageIndex;
+    }];
+    
+    
+}
+
+@end

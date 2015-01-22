@@ -1,0 +1,52 @@
+//
+//  UsefulAddressRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/11.
+//
+//
+
+#import "UsefulAddressRequest.h"
+
+@implementation UsefulAddressRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/customeraddress/index";
+}
+
+-(ITTRequestMethod)getRequestMethod
+{
+    return ITTRequestMethodGet;
+}
+
+
+-(void)processResult
+{
+    [super processResult];
+    
+    if (!self.isSuccess)
+    {
+        return;
+    }
+    
+    PageModel *pageModel = [[PageModel alloc] initWithDataDic:self.resultDic[@"data"]];
+    
+    NSArray *addressDicArray = self.resultDic[@"data"][@"customerAddressInfos"];
+    NSMutableArray *addressArray = [NSMutableArray array];
+    pageModel.listArray = addressArray;
+    
+    for (NSDictionary *addressDic in addressDicArray)
+    {
+        AddressInfoModel *addressInfoModel = [[AddressInfoModel alloc] initWithDataDic:addressDic];
+        [addressArray addObject:addressInfoModel];
+        [addressInfoModel release];
+    }
+    
+    [self.resultDic removeAllObjects];
+    [self.resultDic setObject:pageModel forKey:KRequestResultDataKey];
+    [pageModel release];
+
+}
+
+@end

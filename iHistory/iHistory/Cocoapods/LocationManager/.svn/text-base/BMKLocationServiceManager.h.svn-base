@@ -1,0 +1,28 @@
+//
+//  BMKLocationServiceManager.h
+//  EKS
+//
+//  Created by ligh on 14/12/8.
+//
+//
+
+#import "BMKLocationService.h"
+
+//定位成功
+typedef void(^UpdateToLocationBlock)(BMKUserLocation *newLocation);
+
+//百度地图定位服务管理者
+@interface BMKLocationServiceManager :  NSObject
+
++ (id)defaultLocationService;
+
+//打开定位服务
+-(void)startUserLocationServiceWithUpdateLocationBlock:(UpdateToLocationBlock) updateBlock;
+/**
+ *关闭定位服务
+ */
+-(void)stopUserLocationService;
+
+
+
+@end

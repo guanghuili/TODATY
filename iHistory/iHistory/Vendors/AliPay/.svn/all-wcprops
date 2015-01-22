@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Vendors/AliPay
+END
+AliPayManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Vendors/AliPay/AliPayManager.h
+END
+AlixPayResult.m
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Vendors/AliPay/AlixPayResult.m
+END
+AliPayManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Vendors/AliPay/AliPayManager.m
+END
+PartnerConfig.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Vendors/AliPay/PartnerConfig.h
+END
+AlixPayOrder.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Vendors/AliPay/AlixPayOrder.h
+END
+AlixLibService.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Vendors/AliPay/AlixLibService.h
+END
+AlixPayResult.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Vendors/AliPay/AlixPayResult.h
+END
+AlixPayOrder.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Vendors/AliPay/AlixPayOrder.m
+END

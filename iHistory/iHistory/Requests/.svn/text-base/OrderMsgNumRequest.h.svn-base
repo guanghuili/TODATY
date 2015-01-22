@@ -1,0 +1,15 @@
+//
+//  OrderMsgNumRequest.h
+//  EKS
+//
+//  Created by ligh on 15/1/7.
+//
+//
+
+#import "ITTASIBaseDataRequest.h"
+#import "OrderMsgNumModel.h"
+
+//订单消息数量
+@interface OrderMsgNumRequest : ITTASIBaseDataRequest
+
+@end

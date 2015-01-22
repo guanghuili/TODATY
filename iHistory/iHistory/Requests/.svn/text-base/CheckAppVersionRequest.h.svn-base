@@ -1,0 +1,18 @@
+//
+//  CheckAppVersionRequest.h
+//  EKS
+//
+//  Created by ligh on 14/12/2.
+//
+//
+
+#import "ITTASIBaseDataRequest.h"
+#import "VersionModel.h"
+
+//检测是否有新版本
+@interface CheckAppVersionRequest : ITTASIBaseDataRequest
+
+
+
+
+@end

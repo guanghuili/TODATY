@@ -1,0 +1,28 @@
+//
+//  OrderMsgNumModel.h
+//  EKS
+//
+//  Created by ligh on 15/1/7.
+//
+//
+
+#import "BaseModelObject.h"
+
+//订单消息数量
+@interface OrderMsgNumModel : BaseModelObject
+
+/**
+ 待接单数量	waitReceiveNum	String	true	待接单数量
+ 待取件数量	waitStartNum	String	true	待取件数量
+ 待收件数量	waitEndNum	String	true	待收件数量
+ 完成数量	finishNum	String	true	完成数量
+ 取消数量	cancelNum	String	true	取消数量
+ **/
+
+@property (retain,nonatomic) NSString *waitReceiveNum;
+@property (retain,nonatomic) NSString *waitStartNum;
+@property (retain,nonatomic) NSString *waitEndNum;
+@property (retain,nonatomic) NSString *finishNum;
+@property (retain,nonatomic) NSString *cancelNum;
+
+@end

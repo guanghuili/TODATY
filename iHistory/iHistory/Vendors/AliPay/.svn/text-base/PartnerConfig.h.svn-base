@@ -1,0 +1,33 @@
+﻿//
+//  PartnerConfig.h
+//  AlipaySdkDemo
+//
+//  Created by ChaoGanYing on 13-5-3.
+//  Copyright (c) 2013年 RenFei. All rights reserved.
+//
+//  提示：如何获取安全校验码和合作身份者id
+//  1.用您的签约支付宝账号登录支付宝网站(www.alipay.com)
+//  2.点击“商家服务”(https://b.alipay.com/order/myorder.htm)
+//  3.点击“查询合作者身份(pid)”、“查询安全校验码(key)”
+//
+
+#ifndef MQPDemo_PartnerConfig_h
+#define MQPDemo_PartnerConfig_h
+
+
+#define Notify_Url @"http://webinterface.yingtu366.com/PayNotify.aspx"
+//合作身份者id，以2088开头的16位纯数字
+#define PartnerID @"2088511938561351"
+//收款支付宝账号
+#define SellerID  @"jeff.jing@createus.net"
+
+//安全校验码（MD5）密钥，以数字和字母组成的32位字符
+#define MD5_KEY @"c6p5e5188xwqrngp0gblzb6msmih5add"
+
+//商户私钥，自助生成
+#define PartnerPrivKey @"MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAMej0lpd10+NIwY6Q8TdAnmME9fSnQj8SPLN90yq/STtPn3AIiei+cTO/qhDxjczXnRbwlQpr0Odolfk7GVG89EgA6dZovaL67/gIkki9VaxYX5gAxnHiLwfIU4LID7jgX/mGDA6NsR3hvD5nJSXZg9gPFL8xGvSnbtIrxJRZhiDAgMBAAECgYARE7xcqoZOcb47PCSr5FPf3dGctpFkQWBkFKZA0qeQzxJ3Y0YIqfI/mY1DC3kbI7PCtE6tMFujpwpKBnUKPMWCSUTtFMdeoJCpz9+d3BuASSbC4UgyRd316bVfmYndoUwOMQCXi2uxBY5M0I/Lre9w9V7/OcuNuHXCOps+37C3sQJBAO63xj8Yw0/4lE2WqIRk0Y4TBqOwGvTUV3j7DLiDegnpmB32mlwzC47UPa4Si5UZJbXpw7Y12bxWmjfVSGmYlt0CQQDWF84Hbl8TbnMPVEsOG8gNtGQwWzxJJmJKHuOTY+hqdVB9Ywtox+FnIXe1RbV0I3/GoxYLKAdDgqU0ZwJ834bfAkEA4Jaxw0cu6hw6msy1eunHZd1sj6/tjI4CReYbz7SSqqTE4tvR2hCEPTpdVVpJTFs+aWmnIdSEJ3dq3ECjQgW3WQJADF4vrso3f93fk8Eg3N3J/tCvAQQkRW2MPA/wwbEB2jSQw82W+SSi5txOGBDA3Ma4OPdu7JIRaVsAxDg3MpOPLQJBALvCXEH3PqrVeN05D0lKU5Jaa+OiaTXUTYDP15c9VlnzE5gmkSN0QqRTF4A2hqug/M1FsgXBFichcjV0GCtVNmw="
+
+//支付宝公钥
+#define AlipayPubKey @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB"
+
+#endif

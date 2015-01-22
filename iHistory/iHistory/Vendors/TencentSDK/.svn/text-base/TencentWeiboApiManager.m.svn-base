@@ -1,0 +1,26 @@
+//
+//  TencentWeiboApiManager.m
+//  Carte
+//
+//  Created by ligh on 14-4-21.
+//
+//
+
+#import "TencentWeiboApiManager.h"
+#import "WeiboApi.h"
+#import "WeiboApiObject.h"
+
+@implementation TencentWeiboApiManager
+
+
+static id instance;
++ (id)shareManager
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[TencentWeiboApiManager alloc]initWithAppKey:QQAppKey andSecret:QQAppSecret andRedirectUri:QQRedirectURI andAuthModeFlag:0 andCachePolicy:0] ;
+    });
+    return instance;
+}
+
+@end

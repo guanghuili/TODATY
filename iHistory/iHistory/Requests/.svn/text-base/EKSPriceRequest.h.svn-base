@@ -1,0 +1,13 @@
+//
+//  EKSPriceRequest.h
+//  EKS
+//
+//  Created by ligh on 14/12/26.
+//
+//
+
+#import "ITTASIBaseDataRequest.h"
+
+@interface EKSPriceRequest : ITTASIBaseDataRequest
+
+@end

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Cocoapods/LocationManager
+END
+BMKLocationServiceManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Cocoapods/LocationManager/BMKLocationServiceManager.h
+END
+BMKRouteSearchHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Cocoapods/LocationManager/BMKRouteSearchHelper.h
+END
+BMKLocationServiceManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Cocoapods/LocationManager/BMKLocationServiceManager.m
+END
+BMKRouteSearchHelper.m
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Cocoapods/LocationManager/BMKRouteSearchHelper.m
+END
+LocationManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Cocoapods/LocationManager/LocationManager.h
+END
+LocationManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Cocoapods/LocationManager/LocationManager.m
+END

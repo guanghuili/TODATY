@@ -1,0 +1,292 @@
+//
+//  ShareHelper.m
+//  EKS
+//
+//  Created by ligh on 14/12/15.
+//
+//
+
+#import "ShareHelper.h"
+#import <MessageUI/MFMessageComposeViewController.h>
+
+
+
+@interface ShareHelper()<MFMessageComposeViewControllerDelegate>
+{
+    
+    ShareStatusBlock    _statusBlcok;
+    
+    TencentOAuth        *_tencentOAuth;
+}
+@end
+
+@implementation ShareHelper
+
+-(void)dealloc
+{
+    RELEASE_SAFELY(_tencentOAuth);
+    RELEASE_SAFELY(_statusBlcok);
+    [super dealloc];
+}
+
++(ShareHelper *)shareContent:(NSString *)content platormType:(SharePlatformType)platformType blcok:(ShareStatusBlock)block
+{
+   ShareHelper *shareHelper = [[ShareHelper alloc] init];
+    if (platformType != SharePlatformSMS)
+    {
+        [shareHelper autorelease];
+    }
+    
+    [shareHelper shareContent:content platormType:platformType blcok:block];
+    return shareHelper;
+}
+
+-(void)shareContent:(NSString *)content platormType:(SharePlatformType)platformType blcok:(ShareStatusBlock)block
+{
+    RELEASE_SAFELY(_statusBlcok);
+    _statusBlcok = [block copy];
+    
+    
+    if (platformType == SharePlatformQQ)
+    {
+        if (!_tencentOAuth)
+            //必须调用此OAuth 注册AppID
+            _tencentOAuth = [[TencentOAuth alloc] initWithAppId:QQAppKey andDelegate:nil];
+        
+        QQApiTextObject *txtObj = [QQApiTextObject objectWithText:content];
+        SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:txtObj];
+        QQApiSendResultCode code = [QQApiInterface sendReq:req];
+        [self handleQQSendResult:code];
+        
+    }else if(platformType == SharePlatformWeiXinFriendCircle)
+    {
+        //未安装微信客户端
+        if(![WXApi isWXAppInstalled])
+        {
+            if (_statusBlcok)
+            {
+                _statusBlcok(false);
+            }else
+            {
+                [BDKNotifyHUD showCryingHUDWithText:@"尚未安装微信客户端"];
+            }
+            return;
+        }
+        
+        SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+        req.bText = YES;
+        req.text = content;
+        req.scene = WXSceneTimeline;
+        
+        [WXApi sendReq:req];
+        
+    }else if(platformType == SharePlatformWeiXinFriend)
+    {
+        //未安装微信客户端
+        if(![WXApi isWXAppInstalled])
+        {
+            if (_statusBlcok)
+            {
+                _statusBlcok(false);
+            }else
+            {
+                [BDKNotifyHUD showCryingHUDWithText:@"尚未安装微信客户端"];
+            }
+            return;
+        }
+        
+        SendMessageToWXReq* req = [[[SendMessageToWXReq alloc] init]autorelease];
+        req.bText = YES;
+        req.text = content;
+        req.scene = WXSceneSession;
+        
+        [WXApi sendReq:req];
+        
+    }else if(platformType == SharePlatformSinaWeibo)
+    {
+        if(![WeiboSDK isWeiboAppInstalled])
+        {
+            if (_statusBlcok)
+            {
+                _statusBlcok(false);
+            }else
+            {
+                [BDKNotifyHUD showCryingHUDWithText:@"尚未安装新浪客户端"];
+            }
+            return;
+        }
+        
+        
+        WBMessageObject *message = [WBMessageObject message];
+        message.text = content;
+        WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:message];
+        [WeiboSDK sendRequest:request];
+    }else
+    {
+        [self sendSMS:content];
+    }
+}
+
+
+
+
+//#pragma mark ViewAcitons
+//#//////////////////////////////////////////////////////////////////////////////////////////////
+//#pragma mark 新浪微博
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (void)handleQQSendResult:(QQApiSendResultCode)sendResult
+{
+    switch (sendResult)
+    {
+    
+        case EQQAPIQQNOTINSTALLED:
+        {
+            if (_statusBlcok)
+            {
+                _statusBlcok(false);
+            }else
+            {
+                [BDKNotifyHUD showCryingHUDWithText:@"尚未安装QQ客户端"];
+            }
+            
+            break;
+        }
+        default:
+        {
+            if (_statusBlcok)
+            {
+                _statusBlcok(false);
+                
+            }else
+            {
+               // [BDKNotifyHUD showCryingHUDWithText:@"分享失败"];
+            }
+            break;
+        }
+    }
+}
+
+
+#pragma mark -WXApiDelegate
+-(void)handleWXResp:(BaseResp *)resp
+{
+    if(resp.errCode)
+    {
+        if (_statusBlcok)
+        {
+            _statusBlcok(false);
+            
+        }else
+        {
+            //[BDKNotifyHUD showCryingHUDWithText:@"分享失败"];
+        }
+    }else
+    {
+        if (_statusBlcok)
+        {
+            _statusBlcok(true);
+            
+        }else
+        {
+             [BDKNotifyHUD showSmileyHUDWithText:@"已分享到微信"];
+        }
+    }
+}
+
+//新浪微博
+- (void)handleSinaWeiboResponse:(WBBaseResponse *)response
+{
+ 
+    
+    if ([response isKindOfClass:WBSendMessageToWeiboResponse.class])
+    {
+        if (response.statusCode == 0) //分享成功
+        {
+            if (_statusBlcok)
+            {
+                _statusBlcok(false);
+                
+            }else
+            {
+                [BDKNotifyHUD showSmileyHUDWithText:@"已分享到新浪微博"];
+            }
+        }else
+        {
+            if (_statusBlcok)
+            {
+                _statusBlcok(false);
+                
+            }else
+            {
+             //   [BDKNotifyHUD showCryingHUDWithText:@"分享失败"];
+            }
+        }
+    }
+}
+
+
+//调用sendSMS函数
+//内容，收件人列表
+- (void)sendSMS:(NSString *)bodyOfMessag
+{
+    
+    MFMessageComposeViewController *controller = [[[MFMessageComposeViewController alloc] init] autorelease];
+    controller.messageComposeDelegate = self;
+    if([MFMessageComposeViewController canSendText])
+        
+    {
+        controller.body = bodyOfMessag;
+        
+        AppDelegate *appDelegate = KAPP_Delegate;
+        [appDelegate.window.rootViewController presentViewController:controller animated:YES completion:nil];
+
+        
+    }
+}
+
+// 处理发送完的响应结果
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    AppDelegate *appDelegate = KAPP_Delegate;
+    [appDelegate.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    if (result == MessageComposeResultCancelled)
+    {
+        if (_statusBlcok)
+        {
+            _statusBlcok(false);
+            
+        }else
+        {
+           // [BDKNotifyHUD showSmileyHUDWithText:@"已取消"];
+        }
+        
+    }else if (result == MessageComposeResultSent)
+    {
+        if (_statusBlcok)
+        {
+            _statusBlcok(false);
+            
+        }else
+        {
+            [BDKNotifyHUD showSmileyHUDWithText:@"已发送"];
+        }
+        
+    }else
+    {
+        if (_statusBlcok)
+        {
+            _statusBlcok(false);
+            
+        }else
+        {
+           // [BDKNotifyHUD showSmileyHUDWithText:@"发送失败"];
+        }
+        
+    }
+    
+    RELEASE_SAFELY(self);
+}
+
+@end

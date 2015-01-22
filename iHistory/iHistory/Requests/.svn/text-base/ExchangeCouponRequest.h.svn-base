@@ -1,0 +1,14 @@
+//
+//  ExchangeCouponRequest.h
+//  EKS
+//
+//  Created by ligh on 14/12/9.
+//
+//
+
+#import "ITTASIBaseDataRequest.h"
+
+//兑换优惠码
+@interface ExchangeCouponRequest : ITTASIBaseDataRequest
+
+@end

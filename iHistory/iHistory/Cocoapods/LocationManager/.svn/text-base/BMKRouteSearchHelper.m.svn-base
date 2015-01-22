@@ -1,0 +1,81 @@
+//
+//  BMKRouteSearchHelper.m
+//  EKS
+//
+//  Created by ligh on 14/12/9.
+//
+//
+
+#import "BMKRouteSearchHelper.h"
+
+
+@interface BMKRouteSearchHelper()<BMKRouteSearchDelegate>
+{
+    OnGetResult     _onResult;
+}
+@end
+
+@implementation BMKRouteSearchHelper
+
+static id instance;
++ (id)defaultSearchHelper
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[self alloc] init];
+    });
+    
+    return instance;
+}
+
+
+-(void)dealloc
+{
+    RELEASE_SAFELY(_onResult);
+    [super dealloc];
+}
+
+
+-(BOOL)drivingSearchWithFromPT:(CLLocationCoordinate2D)fromPT toPT:(CLLocationCoordinate2D)toPT drivingPolicy:(BMKDrivingPolicy)drivingPolicy onResult:(OnGetResult)result
+{
+    
+    _onResult = [result copy];
+    
+    BMKRouteSearch *routeSearch = [[[BMKRouteSearch alloc] init] autorelease];
+    routeSearch.delegate = self;
+    
+    BMKPlanNode* start = [[[BMKPlanNode alloc]init] autorelease];
+    start.pt = fromPT;
+    BMKPlanNode* end = [[[BMKPlanNode alloc]init] autorelease];
+    end.pt = toPT;
+    
+    
+    BMKDrivingRoutePlanOption *drivingRouteSearchOption = [[BMKDrivingRoutePlanOption alloc]init];
+    drivingRouteSearchOption.from = start;
+    drivingRouteSearchOption.to = end;
+    drivingRouteSearchOption.drivingPolicy = drivingPolicy;
+    
+    BOOL flag = [routeSearch drivingSearch:drivingRouteSearchOption];
+    [drivingRouteSearchOption release];
+    
+    //如果失败了直接返回
+    if(!flag)
+        _onResult(nil);
+    
+    
+    return flag;
+}
+
+
+#pragma mark BMKRouteSearchDelegate
+-(void)onGetDrivingRouteResult:(BMKRouteSearch *)searcher result:(BMKDrivingRouteResult *)result errorCode:(BMKSearchErrorCode)error
+{
+    if (_onResult)
+    {
+        _onResult(result);
+    }
+    
+    RELEASE_SAFELY(_onResult);
+}
+
+@end

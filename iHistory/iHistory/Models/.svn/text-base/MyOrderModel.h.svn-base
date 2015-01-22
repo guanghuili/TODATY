@@ -1,0 +1,59 @@
+//
+//  MyOrderModel.h
+//  EKS
+//
+//  Created by ligh on 14/12/9.
+//
+//
+
+#import "BaseModelObject.h"
+
+typedef enum
+{
+    WaitCatcherStatus =101,//等待接单
+    WaitTakePartStaus = 102,//待取件
+    WaitReceivedStatus = 103,//待接收
+    CanceldStatus = 104,//已取消
+    CompletedStatus =105//订单完成
+    
+}OrderStatus;//订单状态
+
+//我的订单信息
+@interface MyOrderModel : BaseModelObject
+
+@property (retain,nonatomic) NSString *orderId;
+@property (retain,nonatomic) NSString *orderNo;//订单编号
+@property (retain,nonatomic) NSString *sendUserName;
+@property (retain,nonatomic) NSString *sendUserPhone;
+
+@property (retain,nonatomic) NSString *sendAddress;
+@property (retain,nonatomic) NSString *receiveUserName;
+@property (retain,nonatomic) NSString *receiveUserPhone;
+
+
+@property (retain,nonatomic) NSString *receiveAddress;
+@property (retain,nonatomic) NSString *kilometerNumber;
+@property (retain,nonatomic) NSString *serviceMoney;
+@property (retain,nonatomic) NSString *driverId;
+@property (retain,nonatomic) NSString *driverNo;
+@property (retain,nonatomic) NSString *driverName;
+@property (retain,nonatomic) NSString *orderStatus;
+@property (retain,nonatomic) NSString *mailPayment;
+@property (retain,nonatomic) NSString *itemWeight;
+@property (retain,nonatomic) NSString *itemName;
+@property (retain,nonatomic) NSString *createTime;
+@property (retain,nonatomic) NSString *receiveTime;
+@property (retain,nonatomic) NSString *serviceStartTime;
+@property (retain,nonatomic) NSString *serviceEndTime;
+@property (retain,nonatomic) NSString *cancelTime;//取消时间
+@property (retain,nonatomic) NSString *usedTime;//用时	单位:分钟【不会带上单位】
+@property (retain,nonatomic) NSString *couponMoney;//优惠金额
+@property (retain,nonatomic) NSString *factMoney;//实付金额
+
+
+-(NSString *) orderStatusText;
+
+
+@property (assign,nonatomic) OrderStatus status;
+
+@end

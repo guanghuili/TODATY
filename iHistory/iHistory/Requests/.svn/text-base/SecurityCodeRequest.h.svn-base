@@ -1,0 +1,14 @@
+//
+//  SecurityCodeRequest.h
+//  EKS
+//
+//  Created by ligh on 14/12/3.
+//
+//
+
+#import "ITTASIBaseDataRequest.h"
+
+//获取验证码
+@interface SecurityCodeRequest : ITTASIBaseDataRequest
+
+@end

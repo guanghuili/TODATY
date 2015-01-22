@@ -1,0 +1,128 @@
+//
+//  ITTLoadMoreTableFooterView.h
+//  Demo
+//
+//  Created by Devin Doty on 10/14/09October14.
+//  Copyright 2009 enormego. All rights reserved.
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+//
+
+// This class has derived from the EGORefreshTableHeaderView
+/*!
+ @header        ITTLoadMoreTableFooterView.h
+ @abstract      TableView上拉加载更多时显示的底部视图。这个类衍生自EGORefreshTableHeaderView，一些配置与EGORefreshTableHeaderView一致。
+ @author        baiwei
+ @version       V1.00 2013/06/08 Creation
+ */
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import "ITTRefreshTableHeaderView.h"
+
+@protocol ITTLoadMoreTableFooterDelegate;
+/*!
+ @class
+ @abstract      上拉加载更多时TabelView底部显示的视图
+ */
+@interface ITTLoadMoreTableFooterView : UIView
+{
+	id                              _delegate;
+	EGOPullState                    _state;
+    
+	UILabel                         *_statusLabel;
+	CALayer                         *_arrowImage;
+	UIActivityIndicatorView         *_activityView;
+    // Set this to Yes when egoRefreshTableHeaderDidTriggerRefresh delegate is called and No with egoRefreshScrollViewDataSourceDidFinishedLoading
+    BOOL                            isLoading;
+}
+/*!
+ @property
+ @abstract      这个对象用来接收ITTLoadMoreTableFooterView的代理方法
+ */
+@property(nonatomic,assign) id <ITTLoadMoreTableFooterDelegate> delegate;
+
+/*!
+ @method        egoRefreshScrollViewDidScroll:
+ @abstract      拖动时自加载更多
+ @discussion    拖动时调用此方法，可根据拖动区域高度，更新底部视图的显示状态。
+ @param         scrollView
+ @result        void
+ */
+- (void)egoRefreshScrollViewDidScroll:(UIScrollView *)scrollView;
+
+
+/*!
+ @method        egoRefreshScrollViewDidEndDragging:
+ @abstract      结束拖动时自加载更多
+ @discussion    结束拖动时调用此方法，可根据拖动区域高度，判断是否触发上拉加载更多。
+ @param         scrollView
+ @result        void
+ */
+- (void)egoRefreshScrollViewDidEndDragging:(UIScrollView *)scrollView;
+
+
+/*!
+ @method        egoRefreshScrollViewDataSourceDidFinishedLoading:
+ @abstract      结束加载更多时自加载更多
+ @discussion    结束加载更多时调用此方法，可收回底部视图。
+ @param         scrollView
+ @result        void
+ */
+- (void)egoRefreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView;
+
+
+/*!
+ @method        startAnimatingWithScrollView:
+ @abstract      切换到正在加载状态，并以动画的形式缩回高出触发高度的拖动区域。
+ @discussion    结束拖动且触发加载更多时调用此方法，切换到正在加载状态，并以动画的形式缩回高出触发高度的拖动区域。
+ @param         scrollView
+ @result        void
+ */
+- (void)startAnimatingWithScrollView:(UIScrollView *) scrollView;
+
+
+/*!
+ @method        setBackgroundColor: textColor: arrowImage:
+ @abstract      重新设置背景颜色、字体颜色、箭头图片。
+ @discussion    如果需自定义头部视图样式，请调用此方法，传入正确参数设置。默认为EGORefreshTableHeaderView中的宏定义：DEFAULT_BACKGROUND_COLOR（背景颜色），DEFAULT_TEXT_COLOR（字体颜色），DEFAULT_ARROW_IMAGE（箭头图片）。
+ @param         backgroundColo 背景颜色
+ @param         textColor 字体颜色
+ @param         arrowImage 箭头图片
+ @result        void
+ */
+- (void)setBackgroundColor:(UIColor *)backgroundColor textColor:(UIColor *) textColor arrowImage:(UIImage *) arrowImage;
+@end
+
+
+/*!
+ @protocol
+ @abstract      这是ITTLoadMoreTableFooterView类的代理
+ @discussion    可根据需求实现代理方法
+ */
+@protocol ITTLoadMoreTableFooterDelegate
+
+/*!
+ @method        loadMoreTableFooterDidTriggerLoadMore:
+ @abstract      触发加载更多时调用
+ @discussion    需把使用对象赋给ITTLoadMoreTableFooterView实例的delegate属性。
+ @param v       iew ITTLoadMoreTableFooterView实例
+ @result        void
+ */
+- (void)loadMoreTableFooterDidTriggerLoadMore:(ITTLoadMoreTableFooterView*)view;
+@end

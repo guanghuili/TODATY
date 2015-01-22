@@ -1,0 +1,209 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests
+END
+OrderDetailsRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/OrderDetailsRequest.h
+END
+CheckAppVersionRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/CheckAppVersionRequest.h
+END
+OrderDetailsRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/OrderDetailsRequest.m
+END
+CheckAppVersionRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/CheckAppVersionRequest.m
+END
+ConfigInitRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/ConfigInitRequest.h
+END
+ConfigInitRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/ConfigInitRequest.m
+END
+OrderMsgNumRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/OrderMsgNumRequest.h
+END
+EKSPriceRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/EKSPriceRequest.h
+END
+OrderMsgNumRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/OrderMsgNumRequest.m
+END
+MakeUsefulAddressRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/MakeUsefulAddressRequest.h
+END
+CalculateOrderPriceRequst.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/CalculateOrderPriceRequst.h
+END
+UsefulAddressRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/UsefulAddressRequest.h
+END
+EKSPriceRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/EKSPriceRequest.m
+END
+UpdateUsefulAddressRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/UpdateUsefulAddressRequest.h
+END
+MakeUsefulAddressRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/MakeUsefulAddressRequest.m
+END
+CalculateOrderPriceRequst.m
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/CalculateOrderPriceRequst.m
+END
+UsefulAddressRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/UsefulAddressRequest.m
+END
+UpdateUsefulAddressRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/UpdateUsefulAddressRequest.m
+END
+CreateUsefulAddressRequst.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/CreateUsefulAddressRequst.h
+END
+VoiceSecurityCodeRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/VoiceSecurityCodeRequest.h
+END
+DeleteUsefulAddressRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/DeleteUsefulAddressRequest.h
+END
+CreateUsefulAddressRequst.m
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/CreateUsefulAddressRequst.m
+END
+VoiceSecurityCodeRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/VoiceSecurityCodeRequest.m
+END
+SubmitOrderRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/SubmitOrderRequest.h
+END
+DeleteUsefulAddressRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/DeleteUsefulAddressRequest.m
+END
+SecurityCodeRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/SecurityCodeRequest.h
+END
+SubmitOrderRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/SubmitOrderRequest.m
+END
+ExchangeCouponRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/ExchangeCouponRequest.h
+END
+SecurityCodeRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/SecurityCodeRequest.m
+END
+OrderListRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/OrderListRequest.h
+END
+LoginRequest.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/LoginRequest.h
+END
+ExchangeCouponRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/ExchangeCouponRequest.m
+END
+OrderListRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/OrderListRequest.m
+END
+LoginRequest.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Requests/LoginRequest.m
+END

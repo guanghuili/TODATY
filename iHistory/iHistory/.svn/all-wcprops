@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/30/trunk/EKS1.0/EKS
+END
+main.m
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/main.m
+END
+AppDelegate.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/AppDelegate.h
+END
+UserGuideView.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/UserGuideView.m
+END
+AppDelegate.mm
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/AppDelegate.mm
+END
+EKS-Info.plist
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/EKS-Info.plist
+END
+EKS-Prefix.pch
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/EKS-Prefix.pch
+END
+UserGuideView.xib
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/UserGuideView.xib
+END
+LaunchScreen.xib
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/LaunchScreen.xib
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/readme.txt
+END
+UserGuideView.h
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/UserGuideView.h
+END

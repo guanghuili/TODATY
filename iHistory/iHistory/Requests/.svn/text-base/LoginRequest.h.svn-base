@@ -1,0 +1,14 @@
+//
+//  LoginRequest.h
+//  EKS
+//
+//  Created by ligh on 14/12/3.
+//
+//
+
+#import "ITTASIBaseDataRequest.h"
+
+//登录请求
+@interface LoginRequest : ITTASIBaseDataRequest
+
+@end

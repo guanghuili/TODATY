@@ -1,0 +1,14 @@
+
+//
+//  BannerImageModel.m
+//  EKS
+//
+//  Created by ligh on 15/1/7.
+//
+//
+
+#import "BannerImageModel.h"
+
+@implementation BannerImageModel
+
+@end

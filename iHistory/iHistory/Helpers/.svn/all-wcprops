@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers
+END
+AccountHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/AccountHelper.h
+END
+AddressBookHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/AddressBookHelper.h
+END
+AccountHelper.m
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/AccountHelper.m
+END
+ShareHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/ShareHelper.h
+END
+AccountStatusObserverManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/AccountStatusObserverManager.h
+END
+ConfigHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/ConfigHelper.h
+END
+AddressBookHelper.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/AddressBookHelper.m
+END
+ShareHelper.m
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/ShareHelper.m
+END
+AccountStatusObserverManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/AccountStatusObserverManager.m
+END
+BundleHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/BundleHelper.h
+END
+ConfigHelper.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/ConfigHelper.m
+END
+BundleHelper.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/BundleHelper.m
+END
+LocationCoordinateHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/LocationCoordinateHelper.h
+END
+AppHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/AppHelper.h
+END
+PhoneNumberHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/PhoneNumberHelper.h
+END
+LocationCoordinateHelper.m
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/LocationCoordinateHelper.m
+END
+AppHelper.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/AppHelper.m
+END
+PhoneNumberHelper.m
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/PhoneNumberHelper.m
+END
+HelperHeader.h
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Helpers/HelperHeader.h
+END

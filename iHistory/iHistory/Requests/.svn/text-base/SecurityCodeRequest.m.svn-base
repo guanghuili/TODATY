@@ -1,0 +1,19 @@
+//
+//  SecurityCodeRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/3.
+//
+//
+
+#import "SecurityCodeRequest.h"
+
+@implementation SecurityCodeRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/customer/verifycode";
+}
+
+
+@end

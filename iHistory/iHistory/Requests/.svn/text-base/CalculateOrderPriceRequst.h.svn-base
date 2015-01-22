@@ -1,0 +1,14 @@
+//
+//  CalculateOrderPriceRequst.h
+//  EKS
+//
+//  Created by ligh on 14/12/9.
+//
+//
+
+#import "ITTASIBaseDataRequest.h"
+
+//计算订单价格
+@interface CalculateOrderPriceRequst : ITTASIBaseDataRequest
+
+@end

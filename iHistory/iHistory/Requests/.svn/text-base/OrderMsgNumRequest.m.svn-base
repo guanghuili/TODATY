@@ -1,0 +1,34 @@
+
+//
+//  OrderMsgNumRequest.m
+//  EKS
+//
+//  Created by ligh on 15/1/7.
+//
+//
+
+#import "OrderMsgNumRequest.h"
+
+@implementation OrderMsgNumRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/customer/init/2";
+}
+
+-(ITTRequestMethod)getRequestMethod
+{
+    return ITTRequestMethodGet;
+}
+
+-(void)processResult
+{
+    [super processResult];
+    
+    OrderMsgNumModel *orderMsgNumModel = [[OrderMsgNumModel alloc] initWithDataDic:self.resultDic[@"data"]];
+    [self.resultDic setObject:orderMsgNumModel forKey:KRequestResultDataKey];
+    [orderMsgNumModel release];
+    
+}
+
+@end

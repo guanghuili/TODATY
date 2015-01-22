@@ -1,0 +1,17 @@
+//
+//  UserGuideView.h
+//  EKS
+//
+//  Created by ligh on 14/12/15.
+//
+//
+
+#import "XibView.h"
+
+//用户使用指南
+@interface UserGuideView : XibView
+
+-(void) showGuidViewIfNeed;
+-(void) showGuidView;
+
+@end

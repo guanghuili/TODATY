@@ -1,0 +1,55 @@
+//
+//  OrderListRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/9.
+//
+//
+
+#import "OrderListRequest.h"
+
+@implementation OrderListRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/customerorder/index";
+}
+
+
+-(ITTRequestMethod)getRequestMethod
+{
+    return ITTRequestMethodGet;
+}
+
+-(void)processResult
+{
+    [super processResult];
+    
+    if (!self.isSuccess)
+    {
+        return;
+    }
+    
+    PageModel *pageModel = [[PageModel alloc] initWithDataDic:self.resultDic[@"data"]];
+    
+    NSArray *orderDicArray = self.resultDic[@"data"][@"orderInfos"];
+    NSMutableArray *orderList = [NSMutableArray array];
+    pageModel.listArray = orderList;
+    
+    OrderStatus status = [self.parameters[@"orderStatus"] intValue];
+    
+    for(NSDictionary *orderDic in orderDicArray)
+    {
+        MyOrderModel *orderModel = [[MyOrderModel alloc] initWithDataDic:orderDic];
+        orderModel.status = status;
+        [orderList addObject:orderModel];
+        [orderModel release];
+    }
+    
+    [self.resultDic removeAllObjects];
+    [self.resultDic setObject:pageModel forKey:KRequestResultDataKey];
+    [pageModel release];
+}
+
+
+@end

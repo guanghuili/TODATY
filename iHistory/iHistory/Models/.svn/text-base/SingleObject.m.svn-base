@@ -1,0 +1,25 @@
+//
+//  SingleObject.m
+//  EKS
+//
+//  Created by ligh on 14/12/9.
+//
+//
+
+#import "SingleObject.h"
+
+@implementation SingleObject
+
+
+static id instance;
++ (id)defaultInstance
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[self alloc] init];
+    });
+    
+    return instance;
+}
+
+@end

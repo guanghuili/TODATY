@@ -1,0 +1,355 @@
+//
+//  AppDelegate.m
+//
+//  Created by  ligh 14-12-1.
+//  Copyright (c) 2014年 eks. All rights reserved.
+//
+
+#import "AppDelegate.h"
+#import "AddressBookHelper.h"
+#import "UserGuideView.h"
+#import "MobClick.h"
+#import "EKSConfigManager.h"
+
+
+@interface AppDelegate()<TencentApiInterfaceDelegate,WeiboSDKDelegate,WXApiDelegate,BMKGeneralDelegate>
+{
+    
+    SlideMenuVC                 *_slideMenuVC; //左边侧边栏菜单
+    BMKMapManager               * _mapManager;
+    BOOL                        _forceUpate;//是否需要强制更新
+}
+@end
+
+@implementation AppDelegate
+
+
+
+- (void)dealloc
+{
+    RELEASE_SAFELY(_mMDrawerController);
+    RELEASE_SAFELY(_window);
+    RELEASE_SAFELY(_slideMenuVC);
+    RELEASE_SAFELY(_mapManager);
+    [super dealloc];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
+    
+    
+    //向微信注册 appid
+    [WXApi registerApp:WXAppid];
+    [WeiboSDK enableDebugMode:YES];
+    [WeiboSDK registerApp:SINA_APPKEY];
+    [MobClick startWithAppkey:@"549bc459fd98c5b8de000a8f" reportPolicy:REALTIME channelId:@"appstore"];
+    _mapManager = [[BMKMapManager alloc]init];
+    
+    
+    // 如果要关注网络及授权验证事件，请设定     generalDelegate参数
+    BOOL ret = [_mapManager start:@"KrLnSoGWLsVNBmROxVABNwzN"  generalDelegate:self];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+
+    _slideMenuVC  = [[[SlideMenuVC alloc] init] autorelease];
+
+    
+    self.mMDrawerController = [[MMDrawerController alloc]
+                                             initWithCenterViewController:[_slideMenuVC createOrderVC]
+                                             leftDrawerViewController:_slideMenuVC
+                                             rightDrawerViewController:nil];
+
+
+    [[MMExampleDrawerVisualStateManager sharedManager] setLeftDrawerAnimationType:MMDrawerAnimationTypeSlideAndScale];
+    [[MMExampleDrawerVisualStateManager sharedManager] setRightDrawerAnimationType:MMDrawerAnimationTypeSlideAndScale];
+    
+    [self.mMDrawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.mMDrawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+
+    self.mMDrawerController.shouldStretchDrawer = NO;
+   
+    
+    [self.mMDrawerController
+     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+         MMDrawerControllerDrawerVisualStateBlock block;
+         block = [[MMExampleDrawerVisualStateManager sharedManager]
+                  drawerVisualStateBlockForDrawerSide:drawerSide];
+         if(block){
+             block(drawerController, drawerSide, percentVisible);
+         }
+     }];
+
+    _rootNavigaitonController = [[[SloppySwiperNavigationController alloc] initWithRootViewController:self.mMDrawerController] autorelease];
+    _rootNavigaitonController.automaticallyAdjustsScrollViewInsets = NO;
+    _rootNavigaitonController.edgesForExtendedLayout = UIRectEdgeNone;
+    _rootNavigaitonController.navigationBar.hidden = YES;
+
+ 
+
+    [self.window setRootViewController:_rootNavigaitonController];
+    [self.window makeKeyAndVisible];
+
+    
+    [self.mMDrawerController setMaximumLeftDrawerWidth:self.window.width - self.window.width / 3.0];
+    
+    
+    [[UserGuideView viewFromXIB] showGuidViewIfNeed];
+    
+    [self checkAppVersion:nil isShowAlert:YES];
+    
+    
+
+    return YES;
+}
+
+
+
+//全局控制禁止转屏
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return NO;
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    if(_forceUpate)
+       [self checkAppVersion:nil isShowAlert:YES];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    
+    //如果用户按照正常流程支付 则取消程序自动处理home键返回
+//    AliPayManager *manager =[AliPayManager shareManager];
+//    [AliPayManager cancelPreviousPerformRequestsWithTarget:manager selector:@selector(handleHomeBack) object:nil];
+////
+    //qq
+    if([TencentOAuth CanHandleOpenURL:url])
+    {
+        return [TencentOAuth HandleOpenURL:url];
+        
+    }else if ([TencentApiInterface canOpenURL:url delegate:self])
+    {
+        return  [TencentApiInterface handleOpenURL:url delegate:self];
+        
+    }else if([WeiboSDK handleOpenURL:url delegate:self])
+    {
+        return  YES;
+        
+    }else if([[TencentWeiboApiManager shareManager] handleOpenURL:url])
+    {
+        return YES;
+        
+    }else if([WXApi handleOpenURL:url delegate:self])
+    {
+        return YES;
+        
+    }else{
+      //  [self handleRemoteOpenURL:url];
+    }
+
+    
+    return YES;
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    
+//    //如果用户按照正常流程支付 则取消程序自动处理home键返回
+//    AliPayManager *manager =[AliPayManager shareManager];
+//    [AliPayManager cancelPreviousPerformRequestsWithTarget:manager selector:@selector(handleHomeBack) object:nil];
+////
+    if([TencentOAuth CanHandleOpenURL:url])
+    {
+        return [TencentOAuth HandleOpenURL:url];
+        
+    }else if ([TencentApiInterface canOpenURL:url delegate:self])
+    {
+        return  [TencentApiInterface handleOpenURL:url delegate:self];
+        
+    }else if([WeiboSDK handleOpenURL:url delegate:self])
+    {
+        return  YES;
+        //新浪微博
+        
+    }else if([[TencentWeiboApiManager shareManager] handleOpenURL:url])
+    {
+        return YES;
+        
+    }else if([WXApi handleOpenURL:url delegate:self])
+    {
+        return YES;
+        
+    }else
+    {
+       // [self handleRemoteOpenURL:url];
+    }
+
+  	return YES;
+}
+   
+-(BOOL)onTencentReq:(TencentApiReq *)req
+{
+        return YES;
+}
+    
+-(BOOL)onTencentResp:(TencentApiResp *)resp
+{
+        
+        return YES;
+}
+
+- (void)onGetNetworkState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"联网成功");
+    }
+    else{
+        NSLog(@"onGetNetworkState %d",iError);
+    }
+    
+}
+
+- (void)onGetPermissionState:(int)iError
+{
+    if (0 == iError) {
+        NSLog(@"授权成功");
+    }
+    else {
+        NSLog(@"onGetPermissionState %d",iError);
+    }
+}
+
+-(SlideMenuVC *)slideMenuVC
+{
+    return  _slideMenuVC;
+}
+
+#pragma mark -WXApiDelegate
+-(void)onResp:(BaseResp *)resp
+{
+   // [[ShareHelper defaultInstance] handleWXResp:resp];
+}
+ 
+//新浪微博
+- (void)didReceiveWeiboResponse:(WBBaseResponse *)response
+{
+//    [[ShareHelper defaultInstance] handleSinaWeiboResponse:response];
+}
+
+/**
+ *  启动app store
+ */
+-(void) startAppStore
+{
+    if (IOS_VERSION_CODE  < 7)
+    {
+        NSString * appstoreUrlString = [NSString stringWithFormat:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?mt=8&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&type=Purple+Software&id=%@",@"953364841"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appstoreUrlString]];
+    }else
+    {
+        NSString * appstoreUrlString = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@",@"953364841"];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appstoreUrlString]];
+    }
+    
+}
+
+
+//检测app版本
+-(void) checkAppVersion:(void (^)(VersionModel *versionModel)) block isShowAlert:(BOOL)showAlert
+{
+    
+    _forceUpate = NO;
+    
+    [CheckAppVersionRequest requestWithParameters:@{} withIndicatorView:block ? self.window : nil onRequestFinished:^(ITTBaseDataRequest *request)
+     {
+         
+    if (request.isSuccess)
+         {
+             VersionModel *versionInfoModel = request.resultDic[KRequestResultDataKey];
+
+             if (block)
+             {
+                 block(versionInfoModel);
+             }
+             
+             if (!showAlert) {
+                 return ;
+             }
+         
+            //如果新版本
+             if (versionInfoModel.hasNew)
+             {
+                 //如果需要强制更新
+                 if (versionInfoModel.forceUpgrade.intValue)
+                 {
+                     _forceUpate = YES;
+                     
+                     [[MessageAlertView viewFromXIB] showAlertViewInView:self.window title:@"发现新版本" msg:versionInfoModel.updateDescribe cancelTitle:nil confirmTitle:@"立即更新" onCanleBlock:^{
+                         
+                     } onConfirmBlock:^{
+                         
+                         [self startAppStore];
+                     }];
+                 }else
+                 {
+                     [[MessageAlertView viewFromXIB] showAlertViewInView:self.window title:@"发现新版本" msg:versionInfoModel.updateDescribe cancelTitle:@"下次再说" confirmTitle:@"立即更新" onCanleBlock:^{
+                         
+                     } onConfirmBlock:^{
+                         
+                         [self startAppStore];
+                     }];
+                 }
+             }
+             
+             
+        }
+         
+     } onRequestFailed:^(ITTBaseDataRequest *request)
+     {
+         
+     }];
+}
+
+
+@end

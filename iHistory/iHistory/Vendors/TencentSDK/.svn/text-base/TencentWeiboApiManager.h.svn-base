@@ -1,0 +1,20 @@
+//
+//  TencentWeiboApiManager.h
+//  Carte
+//
+//  Created by ligh on 14-4-21.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+
+/**
+ *  腾讯微博API调用管理者
+ */
+@interface TencentWeiboApiManager : WeiboApi
+
+
++(id) shareManager;
+
+@end

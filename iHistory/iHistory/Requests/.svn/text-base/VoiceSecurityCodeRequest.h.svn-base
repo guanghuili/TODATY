@@ -1,0 +1,14 @@
+//
+//  VoiceSecurityCodeRequest.h
+//  EKS
+//
+//  Created by ligh on 14/12/26.
+//
+//
+
+#import "ITTASIBaseDataRequest.h"
+
+//获取语音验证码
+@interface VoiceSecurityCodeRequest : ITTASIBaseDataRequest
+
+@end

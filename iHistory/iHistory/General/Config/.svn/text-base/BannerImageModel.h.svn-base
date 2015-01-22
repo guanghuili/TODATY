@@ -1,0 +1,17 @@
+//
+//  BannerImageModel.h
+//  EKS
+//
+//  Created by ligh on 15/1/7.
+//
+//
+
+#import "BaseModelObject.h"
+
+///广告焦点图
+@interface BannerImageModel : BaseModelObject
+
+@property (retain,nonatomic) NSString *picHref;
+@property (retain,nonatomic) NSString *picUrl;
+
+@end

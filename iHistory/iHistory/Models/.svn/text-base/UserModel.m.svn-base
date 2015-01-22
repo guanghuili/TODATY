@@ -1,0 +1,32 @@
+//
+//  UserModel.m
+//  PMS
+//
+//  Created by ligh on 14/10/22.
+//
+//
+
+#import "UserModel.h"
+
+@implementation UserModel
+
+- (void)dealloc
+{
+    RELEASE_SAFELY(_customerId);
+    RELEASE_SAFELY(_userId);
+    RELEASE_SAFELY(_userPhone);
+    [super dealloc];
+}
+
+
+//-(NSString *)sexIconName
+//{
+//    return [@"男" isEqualToString:_sex] ? @"nav_icon_Gender_Male" : @"nav_icon_Gender_Female";
+//}
+//
+//-(NSString *)sex
+//{
+//    return [NSString isBlankString:_sex] ? @"女" : _sex;
+//}
+
+@end

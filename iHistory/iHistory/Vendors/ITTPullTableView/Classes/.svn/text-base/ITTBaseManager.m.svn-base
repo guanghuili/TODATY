@@ -1,0 +1,74 @@
+//
+//  ITTBaseManager.m
+//  GuanJiaoTong
+//
+//  Created by xiaogang meng on 6/26/12.
+//  Copyright (c) 2012 itotem. All rights reserved.
+//
+
+#import "ITTBaseManager.h"
+
+@implementation ITTBaseManager
+@synthesize dataResultArray = _dataResultArray;
+@synthesize kRefrashType = _kRefrashType;
+@synthesize currentRequestPage = _currentRequestPage;
+
+- (void)dealloc
+{
+    RELEASE_SAFELY(_addedStateDic);
+    RELEASE_SAFELY(_dataResultArray);
+    [super dealloc];
+}
+
+- (id)init
+{
+    self  = [super init];
+    if (self) 
+    {
+        _addedStateDic = [[NSMutableDictionary alloc] init];
+        self.dataResultArray = [NSMutableArray array];
+        _currentRequestPage = 0;
+        _kRefrashType = kRefrashTypeNone;
+    }
+    return self;
+}
+
+- (void)setPageIndexWithResultCount:(NSInteger)resultCount pageSize:(NSInteger)pageSize
+{
+    if (pageSize >= resultCount)
+        _currentRequestPage++;
+}
+
+- (void)addResultArray:(NSArray *)resultsArray
+{
+}
+
+- (NSString *)getPageIndex
+{
+    NSString *pageIndex = nil;
+    if (_kRefrashType == kRefrashTypeUp) 
+        pageIndex = [NSString stringWithFormat:@"%d",_currentRequestPage];
+    else
+        pageIndex = @"0";
+    return pageIndex;
+}
+
+- (void)removeAllResult
+{
+    [_addedStateDic removeAllObjects];
+    [_dataResultArray removeAllObjects];
+    _currentRequestPage = 0;
+    _kRefrashType = kRefrashTypeNone;
+}
+
+- (void)removeStateWithItemKey:(NSString *)idString
+{
+    [_addedStateDic removeObjectForKey:idString];
+}
+
+- (int)countOfRecord
+{
+    return _dataResultArray.count;
+}
+
+@end

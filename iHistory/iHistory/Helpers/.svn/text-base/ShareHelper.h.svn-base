@@ -1,0 +1,40 @@
+//
+//  ShareHelper.h
+//  EKS
+//
+//  Created by ligh on 14/12/15.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+typedef enum
+{
+
+    SharePlatformSinaWeibo,//新浪微博
+    SharePlatformWeiXinFriendCircle,//微信朋友圈
+    SharePlatformWeiXinFriend,//微信朋友
+    SharePlatformQQ,//分享到qq
+    SharePlatformSMS,//短信分享
+    
+}SharePlatformType;
+
+
+typedef void(^ShareStatusBlock)(BOOL);
+
+//分享平台助手
+@interface ShareHelper : NSObject
+
+
++(ShareHelper *) shareContent:(NSString *) content platormType:(SharePlatformType) platformType blcok:(ShareStatusBlock) block;
+
+
+-(void) shareContent:(NSString *) content platormType:(SharePlatformType) platformType blcok:(ShareStatusBlock) block;
+
+//处理微信分享结果
+-(void)handleWXResp:(BaseResp *)resp;
+
+//处理新浪微博结果
+-(void)handleSinaWeiboResponse:(WBBaseResponse *)response;
+
+@end

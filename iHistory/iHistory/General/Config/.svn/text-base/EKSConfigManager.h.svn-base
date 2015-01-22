@@ -1,0 +1,30 @@
+//
+//  ConfigManager.h
+//  EKS
+//
+//  Created by ligh on 14/12/25.
+//
+//
+
+
+#import "ConfigInitRequest.h"
+#import "ConfigModel.h"
+
+
+typedef void(^ConfigInitBlock)(ConfigModel *configModel);
+
+//配置信息管理者
+@interface EKSConfigManager : NSObject
+
++ (id)defaultConfigManager;
+
+-(void) configInitIfNeed:(ConfigInitBlock) initBlock;
+-(void) configInitIfNeed:(ConfigInitBlock) initBlock showActivityView:(BOOL) isShow;
+
+//判断是否需要检测配置
+-(BOOL) isNeedDetectConfig;
+
+//将内存中的配置设为不可用
+-(void) disableMemoryConfig;
+
+@end

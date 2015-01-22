@@ -1,0 +1,23 @@
+//
+//  MakeUsefulAddressRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/11.
+//
+//
+
+#import "MakeUsefulAddressRequest.h"
+
+@implementation MakeUsefulAddressRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/customeraddress/set";
+}
+
+-(ITTRequestMethod)getRequestMethod
+{
+    return ITTRequestMethodGet;
+}
+
+@end

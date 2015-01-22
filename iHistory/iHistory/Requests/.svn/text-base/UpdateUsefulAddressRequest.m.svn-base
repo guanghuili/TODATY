@@ -1,0 +1,18 @@
+//
+//  UpdateUsefulAddressRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/11.
+//
+//
+
+#import "UpdateUsefulAddressRequest.h"
+
+@implementation UpdateUsefulAddressRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/customeraddress/update";
+}
+
+@end

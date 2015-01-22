@@ -1,0 +1,208 @@
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+
+
+/*!
+ @header        ITTRefreshTableHeaderView.h
+ @abstract      在TableView下拉刷新时显示的头部视图
+ @author        baiwei
+ @version       V1.00 2013/06/08 Creation
+ */
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+
+/*!
+ @enum
+ @abstract      ITTPullTableView当前的状态
+ @constant      EGOOPullPulling 拉动中
+ @constant      EGOOPullNormal 通常状态
+ @constant      EGOOPullLoading 加载中
+ */
+typedef enum{
+	EGOOPullPulling = 0,
+	EGOOPullNormal,
+	EGOOPullLoading,	
+} EGOPullState;
+
+/*!
+ @define
+ @abstract      上拉和下拉时显示的箭头图片
+ */
+#define DEFAULT_ARROW_IMAGE         [UIImage imageNamed:@"arrow"]
+
+/*!
+ @define
+ @abstract      刷新视图和加载更多视图的默认 背景颜色
+ */
+#define DEFAULT_BACKGROUND_COLOR   [UIColor whiteColor]//  [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0]
+
+/*!
+ @define
+ @abstract      刷新视图和加载更多视图的默认 字体颜色
+ */
+#define DEFAULT_TEXT_COLOR         [UIColor grayColor]//  [UIColor colorWithRed:87.0/255.0 green:108.0/255.0 blue:137.0/255.0 alpha:1.0]
+
+/*!
+ @define
+ @abstract      正在加载时的默认 活动指示器样式
+ */
+#define DEFAULT_ACTIVITY_INDICATOR_STYLE    UIActivityIndicatorViewStyleGray
+
+
+/*!
+ @define
+ @abstract      箭头翻转动画的持续时间
+ */
+#define FLIP_ANIMATION_DURATION 0.18f
+
+/*!
+ @define
+ @abstract      拖动区域的高度
+ */
+#define PULL_AREA_HEIGTH 60.0f
+
+/*!
+ @define
+ @abstract      触发刷新或加载更多的高度
+ */
+#define PULL_TRIGGER_HEIGHT          PULL_AREA_HEIGTH //(PULL_AREA_HEIGTH + 5.0f)
+
+
+@protocol ITTRefreshTableHeaderDelegate;
+
+/*!
+ @class
+ @abstract      下拉刷新TabelView显示的头部视图
+ */
+@interface ITTRefreshTableHeaderView : UIView <UITableViewDelegate>
+{
+	
+	id _delegate;
+	EGOPullState _state;
+    
+	UILabel *_lastUpdatedLabel;
+	UILabel *_statusLabel;
+	CALayer *_arrowImage;
+	UIActivityIndicatorView *_activityView;
+    
+    // Set this to Yes when egoRefreshTableHeaderDidTriggerRefresh delegate is called and No with egoRefreshScrollViewDataSourceDidFinishedLoading
+    BOOL isLoading;
+	
+}
+/*!
+ @property
+ @abstract      这个对象用来接收ITTRefreshTableHeaderView的代理方法
+ */
+@property(nonatomic,assign) id <ITTRefreshTableHeaderDelegate> delegate;
+
+/*!
+ @method        refreshLastUpdatedDate
+ @abstract      刷新最后更新日期
+ @discussion    下拉刷新可显示上次刷新时间，（“刚刚”、“1分钟前”、“1小时前”等），调用此方法可更新上次刷新时间。
+ @result void
+ */
+- (void)refreshLastUpdatedDate;
+
+/*!
+ @method        egoRefreshScrollViewDidScroll:
+ @abstract      拖动时自刷新
+ @discussion    拖动时调用此方法，可根据拖动区域高度，更新头部视图的显示状态。
+ @param         scrollView
+ @result        void
+ */
+- (void)egoRefreshScrollViewDidScroll:(UIScrollView *)scrollView;
+
+
+/*!
+ @method        egoRefreshScrollViewDidEndDragging:
+ @abstract      结束拖动时自刷新
+ @discussion    结束拖动时调用此方法，可根据拖动区域高度，判断是否触发下拉刷新。
+ @param         scrollView
+ @result        void
+ */
+- (void)egoRefreshScrollViewDidEndDragging:(UIScrollView *)scrollView;
+
+
+/*!
+ @method        egoRefreshScrollViewWillBeginDragging:
+ @abstract      将要开始拖动时自刷新
+ @discussion    将要开始拖动时调用此方法，刷新最后更新日期。
+ @param         scrollView
+ @result        void
+ */
+- (void)egoRefreshScrollViewWillBeginDragging:(UIScrollView *)scrollView;
+
+
+/*!
+ @method        egoRefreshScrollViewDataSourceDidFinishedLoading:
+ @abstract      结束加载时自刷新
+ @discussion    结束加载时调用此方法，可收回头部视图。
+ @param         scrollView
+ @result        void
+ */
+- (void)egoRefreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView;
+
+
+/*!
+ @method        startAnimatingWithScrollView:
+ @abstract      切换到正在加载状态，并以动画的形式缩回高出触发高度的拖动区域。
+ @discussion    结束拖动且触发刷新时调用此方法，切换到正在加载状态，并以动画的形式缩回高出触发高度的拖动区域。
+ @param         scrollView
+ @result        void
+ */
+- (void)startAnimatingWithScrollView:(UIScrollView *) scrollView;
+
+
+/*!
+ @method        setBackgroundColor: textColor: arrowImage:
+ @abstract      重新设置背景颜色、字体颜色、箭头图片。
+ @discussion    如果需自定义头部视图样式，请调用此方法，传入正确参数设置。
+ @param         backgroundColo 背景颜色
+ @param         textColor 字体颜色
+ @param         arrowImage 箭头图片
+ @result        void
+ */
+- (void)setBackgroundColor:(UIColor *)backgroundColor textColor:(UIColor *) textColor arrowImage:(UIImage *) arrowImage;
+@end
+
+/*!
+ @protocol      ITTRefreshTableHeaderDelegate:
+ @abstract      这是ITTRefreshTableHeaderView类的代理
+ @discussion    可根据需求实现代理方法
+ */
+@protocol ITTRefreshTableHeaderDelegate
+/*!
+ @method        egoRefreshTableHeaderDidTriggerRefresh:
+ @abstract      触发刷新时调用
+ @discussion    需把使用对象赋给ITTRefreshTableHeaderView实例的delegate属性。
+ @param         view ITTRefreshTableHeaderView实例
+ @result        void
+ */
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(ITTRefreshTableHeaderView*)view;
+
+@optional
+/*!
+ @method        egoRefreshTableHeaderDataSourceLastUpdated:
+ @abstract      刷新上次更新时间时调用
+ @discussion    返回一个自定义的刷新时间
+ @param         view ITTRefreshTableHeaderView实例
+ @result        NSDate 返回上次更新时间
+ */
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(ITTRefreshTableHeaderView*)view;
+
+@end

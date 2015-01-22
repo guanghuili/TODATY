@@ -1,0 +1,28 @@
+//
+//  CheckAppVersionRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/2.
+//
+//
+
+#import "CheckAppVersionRequest.h"
+
+@implementation CheckAppVersionRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/update_new/ios/";
+}
+
+-(void)processResult
+{
+    [super processResult];
+    
+    VersionModel *versonModel = [[VersionModel alloc] initWithDataDic:self.resultDic[@"data"]];
+    [self.resultDic setObject:versonModel forKey:KRequestResultDataKey];
+    [versonModel release];
+    
+}
+
+@end

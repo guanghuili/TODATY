@@ -1,0 +1,38 @@
+//
+//  OrderDetailsRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/10.
+//
+//
+
+#import "OrderDetailsRequest.h"
+
+@implementation OrderDetailsRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/customerorder/detail/1";
+}
+
+-(ITTRequestMethod)getRequestMethod
+{
+    return ITTRequestMethodGet;
+}
+
+-(void)processResult
+{
+    [super processResult];
+    
+    if (!self.isSuccess)
+    {
+        return;
+    }
+    
+    MyOrderModel *orderModel = [[MyOrderModel alloc] initWithDataDic:self.resultDic[@"data"][@"orderInfo"]];
+    [self.resultDic removeAllObjects];
+    [self.resultDic setObject:orderModel forKey:KRequestResultDataKey];
+    [orderModel release];
+}
+
+@end

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>13C8A1C6-5B15-4225-9330-97DABD3F9241</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PMS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>84FFEAB3-AE6E-42AE-95CC-FD7CA4F8D6D9</key>
+		<string>https://192.168.1.3/svn/JuDian/IOS/Store/source/Carte/Vendors/AliPay</string>
+		<key>DCB834EA-DDC9-4863-902C-5A6D266AC333</key>
+		<string>http://svn.qcdn.net:8080/svn/QCDN</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PMS/IOS/PMS/PMS.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>84FFEAB3-AE6E-42AE-95CC-FD7CA4F8D6D9</key>
+		<string>../../PMS/Vendors/AliPay</string>
+		<key>DCB834EA-DDC9-4863-902C-5A6D266AC333</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>84FFEAB3-AE6E-42AE-95CC-FD7CA4F8D6D9</key>
+		<string>https://192.168.1.3/svn/JuDian</string>
+		<key>DCB834EA-DDC9-4863-902C-5A6D266AC333</key>
+		<string>http://svn.qcdn.net:8080/svn/QCDN</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://svn.qcdn.net:8080/svn/QCDN/PMS/IOS/PMS/PMS.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DCB834EA-DDC9-4863-902C-5A6D266AC333</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>84FFEAB3-AE6E-42AE-95CC-FD7CA4F8D6D9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AliPay</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DCB834EA-DDC9-4863-902C-5A6D266AC333</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SVN_QCDN</string>
+		</dict>
+	</array>
+</dict>
+</plist>

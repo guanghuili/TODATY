@@ -1,0 +1,23 @@
+//
+//  BMKRouteSearchHelper.h
+//  EKS
+//
+//  Created by ligh on 14/12/9.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+//定位成功
+typedef void(^OnGetResult)(id);
+
+//百度路程规划助手类
+@interface BMKRouteSearchHelper : NSObject
+
+
++ (id)defaultSearchHelper;
+
+//驾车路线规划
+- (BOOL)drivingSearchWithFromPT:(CLLocationCoordinate2D) fromPT toPT:(CLLocationCoordinate2D) toPT  drivingPolicy:(BMKDrivingPolicy) drivingPolicy onResult:(OnGetResult) result;
+
+@end

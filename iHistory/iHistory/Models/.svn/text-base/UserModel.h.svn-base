@@ -1,0 +1,20 @@
+//
+//  UserModel.h
+//  PMS
+//
+//  Created by ligh on 14/10/22.
+//
+//
+
+#import "BaseModelObject.h"
+
+//用户信息
+@interface UserModel : BaseModelObject
+
+
+@property (retain,nonatomic) NSString *customerId; //用户id
+@property (retain,nonatomic) NSString *userPhone;
+@property (retain,nonatomic) NSString *userId;
+
+
+@end

@@ -1,0 +1,19 @@
+//
+//  ShareTemplate.h
+//  EKS
+//
+//  Created by ligh on 14/12/25.
+//
+//
+
+#import "BaseModelObject.h"
+
+//分享内容模板
+@interface ShareTemplate : BaseModelObject
+
+@property (retain,nonatomic) NSString * share_wx;
+@property (retain,nonatomic) NSString * share_wxCircle;
+@property (retain,nonatomic) NSString * share_sina;
+@property (retain,nonatomic)  NSString *share_sms;
+
+@end

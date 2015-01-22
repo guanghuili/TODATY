@@ -1,0 +1,73 @@
+//
+//  OrderModel.h
+//  EKS
+//
+//  Created by ligh on 14/12/5.
+//
+//
+
+#import "BaseModelObject.h"
+
+typedef enum
+{
+    CashPayment,//现金支付
+    AccountBalancePayment,//账户余额支付
+    
+    
+}PaymentMethod;//付款方式
+
+
+typedef enum
+{
+    Sendpayment,//寄付
+    Topayment,//到付
+    
+}PaymentMode;//支付方式
+
+//订单model
+@interface OrderModel : BaseModelObject
+
+//发件人信息
+@property (retain,nonatomic) NSString       *senderName;
+@property (retain,nonatomic) NSString       *senderPhone;
+@property (retain,nonatomic) NSString       *senderAddress;
+@property (retain,nonatomic) NSString       *senderDetailsAddress;
+
+
+@property (assign,nonatomic) CLLocationCoordinate2D senderPT;//寄件人位置
+
+//收件人信息
+@property (retain,nonatomic) NSString *receiverName;
+@property (retain,nonatomic) NSString *receiverPhone;
+@property (retain,nonatomic) NSString *receiveraddress;
+@property (retain,nonatomic) NSString  *receiverDetailsaddress;
+@property (assign,nonatomic) CLLocationCoordinate2D recevierPT;//收件人位置
+
+
+@property (retain,nonatomic) NSString *articleWeidght;//物品重量
+@property (retain,nonatomic) NSString *articleName;//物品名称
+@property (retain,nonatomic) NSString *coupon;//优惠劵
+@property (retain,nonatomic) NSString *couponParValue;//优惠劵面值
+
+@property (assign,nonatomic) PaymentMode    paymentMode;//支付者 //寄付 到付
+@property (assign,nonatomic) PaymentMethod        paymentMethod;//
+
+@property (retain,nonatomic) NSString *note;//备注
+
+@property (retain,nonatomic) NSString *totalMoney;//订单总金额 未减折扣
+@property (retain,nonatomic) NSString *factMoney;//单实际收费金额（可以再与优惠券进行操作，如：减去优惠金额）
+@property (retain,nonatomic) NSString *isFirstOrder;//是否首单标志（1首单0不是首单）
+
+
+
+//发件人和接收人直接的最短距离 单位：米
+@property (assign,nonatomic) int distance;
+//距离（发件地址与收件地址，单位：公里
+@property (retain,nonatomic) NSString *kilometerNumber;
+
+
+-(NSString *) paymentMethodText;
+
+
+
+@end

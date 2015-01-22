@@ -1,0 +1,49 @@
+//
+//  AccountHelper.m
+//  Carte
+//
+//  Created by ligh on 14-4-29.
+//
+//
+
+#import "AccountHelper.h"
+
+@implementation AccountHelper
+
++(BOOL)isLogin
+{
+    return [self userInfo] != nil && ![NSString isBlankString:[self uid]];
+}
+
++(UserModel *) userInfo
+{
+    return (UserModel *)[[DataCacheManager sharedManager] getCachedObjectByKey:Store_UserInfoKey];
+}
+
++(NSString *)uid
+{
+    
+    NSString *uid = [[self userInfo] customerId];
+   
+    if ([NSString isBlankString:uid])
+    {
+        return @"";
+    }
+    return uid;
+
+}
+
+
++(void)saveUserInfo:(UserModel *)userInfoModel
+{
+    [[DataCacheManager sharedManager] addObject:userInfoModel forKey:Store_UserInfoKey];
+}
+
+
++(void)logout
+{
+
+    [[DataCacheManager sharedManager] removeObjectInCacheByKey:Store_UserInfoKey];
+}
+
+@end

@@ -1,0 +1,23 @@
+//
+//  DeleteUsefulAddressRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/11.
+//
+//
+
+#import "DeleteUsefulAddressRequest.h"
+
+@implementation DeleteUsefulAddressRequest
+
+-(NSString *)getRequestUrl
+{
+  return @"/u/customeraddress/delete/";
+}
+
+-(ITTRequestMethod)getRequestMethod
+{
+    return ITTRequestMethodPost;
+}
+
+@end

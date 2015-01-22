@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Vendors/AliPay/RSA
+END
+DataSigner.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Vendors/AliPay/RSA/DataSigner.h
+END
+DataVerifier.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/Vendors/AliPay/RSA/DataVerifier.h
+END

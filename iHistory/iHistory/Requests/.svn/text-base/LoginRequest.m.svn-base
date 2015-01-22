@@ -1,0 +1,30 @@
+//
+//  LoginRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/3.
+//
+//
+
+#import "LoginRequest.h"
+
+@implementation LoginRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/customer/loginnew";
+}
+
+-(void)processResult
+{
+    [super processResult];
+    
+    if (self.isSuccess)
+    {
+        UserModel *userModel = [[UserModel alloc]initWithDataDic:self.resultDic[@"data"]];
+        [AccountHelper saveUserInfo:userModel];
+        [userModel release];
+    }
+}
+
+@end

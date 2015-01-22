@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/General/Config
+END
+BannerImageModel.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/General/Config/BannerImageModel.h
+END
+ConfigModel.m
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/General/Config/ConfigModel.m
+END
+BannerImageModel.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/General/Config/BannerImageModel.m
+END
+ShareTemplate.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/General/Config/ShareTemplate.h
+END
+EKSConfigManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/General/Config/EKSConfigManager.h
+END
+ShareTemplate.m
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/General/Config/ShareTemplate.m
+END
+ConfigModel.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/General/Config/ConfigModel.h
+END
+EKSConfigManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/eks_mobile_customer_ios_2.0/!svn/ver/28/trunk/EKS1.0/EKS/General/Config/EKSConfigManager.m
+END

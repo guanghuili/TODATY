@@ -1,0 +1,31 @@
+//
+//  AppDelegate.h
+//  iTotemMinFramework
+//
+//  Created by  on 12-8-27.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "SloppySwiperNavigationController.h"
+#import "CheckAppVersionRequest.h"
+#import "SlideMenuVC.h"
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+
+}
+
+@property (strong, nonatomic)    UIWindow *window;
+@property (strong, nonatomic)    SloppySwiperNavigationController *rootNavigaitonController;
+@property (strong,nonatomic)     MMDrawerController *mMDrawerController;
+
+
+-(SlideMenuVC *) slideMenuVC;
+
+-(void) startAppStore;
+
+-(void) checkAppVersion:(void (^)(VersionModel *versionModel)) block isShowAlert:(BOOL) showAlert;
+
+
+
+@end

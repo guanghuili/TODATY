@@ -1,0 +1,14 @@
+//
+//  MakeUsefulAddressRequest.h
+//  EKS
+//
+//  Created by ligh on 14/12/11.
+//
+//
+
+#import "ITTASIBaseDataRequest.h"
+
+//标记为常用地址
+@interface MakeUsefulAddressRequest : ITTASIBaseDataRequest
+
+@end

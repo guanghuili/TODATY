@@ -1,0 +1,24 @@
+
+//
+//  VoiceSecurityCodeRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/26.
+//
+//
+
+#import "VoiceSecurityCodeRequest.h"
+
+@implementation VoiceSecurityCodeRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/customer/verifycode";
+}
+
+-(ITTRequestMethod)getRequestMethod
+{
+    return ITTRequestMethodGet;
+}
+
+@end

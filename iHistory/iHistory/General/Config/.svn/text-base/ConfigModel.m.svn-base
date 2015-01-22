@@ -1,0 +1,21 @@
+//
+//  ConfigModel.m
+//  EKS
+//
+//  Created by ligh on 14/12/25.
+//
+//
+
+#import "ConfigModel.h"
+
+@implementation ConfigModel
+
+-(void)dealloc
+{
+    RELEASE_SAFELY(_isUpdate);
+    RELEASE_SAFELY(_version);
+    RELEASE_SAFELY(_shareModel);
+    [super dealloc];
+}
+
+@end

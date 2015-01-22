@@ -1,0 +1,23 @@
+//
+//  EKSPriceRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/26.
+//
+//
+
+#import "EKSPriceRequest.h"
+
+@implementation EKSPriceRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/mobile/customer-user/price";
+}
+
+-(ITTRequestMethod)getRequestMethod
+{
+    return ITTRequestMethodGet;
+}
+
+@end

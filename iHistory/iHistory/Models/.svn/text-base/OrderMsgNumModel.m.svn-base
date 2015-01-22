@@ -1,0 +1,23 @@
+//
+//  OrderMsgNumModel.m
+//  EKS
+//
+//  Created by ligh on 15/1/7.
+//
+//
+
+#import "OrderMsgNumModel.h"
+
+@implementation OrderMsgNumModel
+
+-(void)dealloc
+{
+    RELEASE_SAFELY(_waitReceiveNum);
+    RELEASE_SAFELY(_waitEndNum);
+    RELEASE_SAFELY(_waitStartNum);
+    RELEASE_SAFELY(_finishNum);
+    RELEASE_SAFELY(_cancelNum);
+    [super dealloc];
+}
+
+@end

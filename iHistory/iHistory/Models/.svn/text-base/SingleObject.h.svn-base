@@ -1,0 +1,16 @@
+//
+//  SingleObject.h
+//  EKS
+//
+//  Created by ligh on 14/12/9.
+//
+//
+
+#import <Foundation/Foundation.h>
+
+//单例对象
+@interface SingleObject : NSObject
+
++ (id)defaultInstance;
+
+@end

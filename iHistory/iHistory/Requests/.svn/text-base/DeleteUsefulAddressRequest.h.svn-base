@@ -1,0 +1,14 @@
+//
+//  DeleteUsefulAddressRequest.h
+//  EKS
+//
+//  Created by ligh on 14/12/11.
+//
+//
+
+#import "ITTASIBaseDataRequest.h"
+
+//删除常用地址请求
+@interface DeleteUsefulAddressRequest : ITTASIBaseDataRequest
+
+@end

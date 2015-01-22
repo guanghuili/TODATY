@@ -1,0 +1,47 @@
+//
+//  OrderModel.m
+//  EKS
+//
+//  Created by ligh on 14/12/5.
+//
+//
+
+#import "OrderModel.h"
+
+@implementation OrderModel
+
+
+-(void)dealloc
+{
+    RELEASE_SAFELY(_senderName);
+    RELEASE_SAFELY(_senderPhone);
+    RELEASE_SAFELY(_senderAddress);
+    RELEASE_SAFELY(_senderDetailsAddress);
+    RELEASE_SAFELY(_receiverName);
+    RELEASE_SAFELY(_receiverPhone);
+    RELEASE_SAFELY(_receiveraddress);
+    RELEASE_SAFELY(_receiverDetailsaddress);
+    RELEASE_SAFELY(_articleWeidght);
+    RELEASE_SAFELY(_articleName);
+    RELEASE_SAFELY(_coupon);
+    RELEASE_SAFELY(_couponParValue);
+    RELEASE_SAFELY(_note);
+    RELEASE_SAFELY(_totalMoney);
+    [super dealloc];
+}
+
+-(NSString *)paymentMethodText
+{
+    if (_paymentMethod == CashPayment)
+    {
+        return @"现金支付";
+        
+    }else if(_paymentMethod == AccountBalancePayment)
+    {
+        return @"账号余额支付";
+    }
+    
+    return @"现金支付";
+}
+
+@end

@@ -1,0 +1,20 @@
+//
+//  VersonModel.h
+//  EKS
+//
+//  Created by ligh on 14/12/2.
+//
+//
+
+#import "BaseModelObject.h"
+
+@interface VersionModel : BaseModelObject
+
+@property (retain,nonatomic) NSString *versionCode;
+@property (retain,nonatomic) NSString *forceUpgrade;
+@property (retain,nonatomic) NSString *url;
+@property (retain,nonatomic) NSString *updateDescribe;
+
+-(BOOL) hasNew;
+
+@end

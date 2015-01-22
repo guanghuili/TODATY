@@ -1,0 +1,119 @@
+//
+//  ITTBaseManager.h
+//  GuanJiaoTong
+//
+//  Created by xiaogang meng on 6/26/12.
+//  Copyright (c) 2012 itotem. All rights reserved.
+//
+
+/*!
+ @header        ITTBaseManager.h
+ @abstract      管理TableView
+ @author        baiwei
+ @version       V1.00 2013/06/08 Creation
+ */
+#import <Foundation/Foundation.h>
+#define PAGE_SIZE_NUBMER       1000
+
+
+/*!
+ @enum
+ @abstract      TableView刷新状态
+ @constant      kRefrashTypeNone 无状态
+ @constant      kRefrashTypeUp 上拉加载更多状态
+ @constant      kRefrashTypeDown 下拉刷新状态
+ */
+typedef enum
+{
+    kRefrashTypeNone = 0,
+    kRefrashTypeUp,
+    kRefrashTypeDown
+} kRefrashType;
+
+
+/*!
+ @class
+ @abstract      管理TableView数据的类
+ */
+@interface ITTBaseManager : NSObject
+{
+    NSMutableDictionary *_addedStateDic;
+    NSMutableArray *_dataResultArray;
+    int _currentRequestPage;
+    kRefrashType _kRefrashType;
+}
+
+
+/*!
+ @property
+ @abstract      返回的数据数组
+ */
+@property(nonatomic, retain) NSMutableArray *dataResultArray;
+
+
+/*!
+ @property
+ @abstract      刷新状态
+ */
+@property(nonatomic, assign) kRefrashType kRefrashType;
+
+
+/*!
+ @property
+ @abstract      当前请求了多少页
+ */
+@property(nonatomic, assign) int currentRequestPage;
+
+
+///*!
+// @method      addResultArray:
+// @abstract    需让子类重写此方法，将model加入dataResultArray数组。
+// @discussion  使用ITTBaseManager类可让子类重写此方法，并在方法实现中将model加入dataResultArray数组。
+// @param       resultsArray 请求到的数据
+// @result      void
+// */
+- (void)addResultArray:(NSArray *)resultsArray;
+
+
+/*!
+ @method        setPageIndexWithResultCount: pageSize:
+ @abstract      根据返回结果个数，设置页面索引。
+ @discussion    请求到数据后调用此方法传入正确参数，可根据返回结果个数设置页面索引是否增加。
+ @param         resultCount 本次请求返回多少条数据
+ @param         pageSize 每页多少数据
+ @result        void
+ */
+- (void)setPageIndexWithResultCount:(NSInteger)resultCount pageSize:(NSInteger)pageSize;
+
+
+/*!
+ @method        removeAllResult
+ @abstract      清空数据
+ @discussion    调用此方法将清空所有数据
+ @result        void
+ */
+- (void)removeAllResult;
+
+
+
+- (void)removeStateWithItemKey:(NSString *)idString;
+
+
+/*!
+ @method        countOfRecord
+ @abstract      获取数据个数
+ @discussion    调用此方法获取数据个数
+ @result        int 数据个数
+ */
+- (int)countOfRecord;
+
+
+/*!
+ @method        getPageIndex
+ @abstract      加载页数
+ @discussion    调用此方法获取加载页数，返回NSString类型
+ @result        NSString 加载页数
+ */
+- (NSString *)getPageIndex;
+
+@end

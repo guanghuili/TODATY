@@ -1,0 +1,13 @@
+//
+//  ConfigInitRequest.h
+//  EKS
+//
+//  Created by ligh on 14/12/25.
+//
+//
+
+#import "ITTASIBaseDataRequest.h"
+
+@interface ConfigInitRequest : ITTASIBaseDataRequest
+
+@end

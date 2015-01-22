@@ -1,0 +1,56 @@
+//
+//  ConfigInitRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/25.
+//
+//
+
+#import "ConfigInitRequest.h"
+#import "ConfigModel.h"
+
+@implementation ConfigInitRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/customer/init";
+}
+
+-(ITTRequestMethod)getRequestMethod
+{
+    return ITTRequestMethodGet;
+}
+
+-(void)processResult
+{
+    [super processResult];
+    
+    if (!self.isSuccess)
+    {
+        return;
+    }
+    
+    ConfigModel *configModel = [[ConfigModel alloc] initWithDataDic:self.resultDic[@"data"]];
+    ShareTemplate *shareModel = [[ShareTemplate alloc] initWithDataDic:self.resultDic[@"data"][@"shareTemplates"]];
+    configModel.shareModel = shareModel;
+    
+    NSArray *bannerPicsDicArray = self.resultDic[@"data"][@"bannerPics"][@"bannerPicture"];
+    NSMutableArray *bannerPicArray = [NSMutableArray array];
+    if (bannerPicsDicArray)
+    {
+        for (id dic in bannerPicsDicArray)
+        {
+            BannerImageModel *imageModel = [[BannerImageModel alloc] initWithDataDic:dic];
+            [bannerPicArray addObject:imageModel];
+            [imageModel release];
+        }
+    }
+
+    configModel.bannerPicArray = bannerPicArray;
+    
+    [self.resultDic setObject:configModel forKey:KRequestResultDataKey];
+    [configModel release];
+    [shareModel release];
+}
+
+@end

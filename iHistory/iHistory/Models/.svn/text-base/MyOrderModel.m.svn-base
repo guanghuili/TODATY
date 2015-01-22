@@ -1,0 +1,69 @@
+//
+//  MyOrderModel.m
+//  EKS
+//
+//  Created by ligh on 14/12/9.
+//
+//
+
+#import "MyOrderModel.h"
+
+@implementation MyOrderModel
+
+-(void)dealloc
+{
+    RELEASE_SAFELY(_orderId);
+    RELEASE_SAFELY(_orderNo);
+    RELEASE_SAFELY(_sendUserName);
+    RELEASE_SAFELY(_sendAddress);
+    RELEASE_SAFELY(_receiveAddress);
+    RELEASE_SAFELY(_receiveUserName);
+    RELEASE_SAFELY(_kilometerNumber);
+    RELEASE_SAFELY(_serviceMoney);
+    RELEASE_SAFELY(_driverId);
+    RELEASE_SAFELY(_driverNo);
+    RELEASE_SAFELY(_driverName);
+    RELEASE_SAFELY(_orderStatus);
+    RELEASE_SAFELY(_mailPayment);
+    RELEASE_SAFELY(_itemWeight);
+    RELEASE_SAFELY(_createTime);
+    RELEASE_SAFELY(_receiveTime);
+    RELEASE_SAFELY(_serviceStartTime);
+    RELEASE_SAFELY(_serviceEndTime);
+    RELEASE_SAFELY(_cancelTime);
+    RELEASE_SAFELY(_usedTime);
+    RELEASE_SAFELY(_couponMoney);
+    RELEASE_SAFELY(_itemName);
+    RELEASE_SAFELY(_sendUserPhone);
+    RELEASE_SAFELY(_receiveUserPhone);
+    
+    [super dealloc];
+}
+
+-(OrderStatus)status
+{
+    if (![NSString isBlankString:_orderStatus])
+    {
+        return [_orderStatus intValue];
+    }
+    
+    return _status;
+}
+
+-(NSString *)orderStatusText
+{
+    if (self.status == WaitCatcherStatus)
+        return @"待接单";
+    if (self.status == WaitTakePartStaus)
+        return @"待取件";
+    if (self.status == WaitReceivedStatus)
+        return @"待签收";
+    if(self.status == CanceldStatus)
+        return @"已取消";
+    if(self.status == CompletedStatus)
+        return @"已签收";
+    
+    return @"错误订单";
+}
+
+@end

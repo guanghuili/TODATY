@@ -1,0 +1,26 @@
+//
+//  CalculateOrderPriceRequst.m
+//  EKS
+//
+//  Created by ligh on 14/12/9.
+//
+//
+
+#import "CalculateOrderPriceRequst.h"
+
+@implementation CalculateOrderPriceRequst
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/onlineorder/price";
+}
+
+
+-(ITTRequestMethod)getRequestMethod
+{
+    return ITTRequestMethodGet;
+}
+
+
+
+@end

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>73716969-7880-4AE0-8463-B9496E339B05</string>
+	<key>IDESourceControlProjectName</key>
+	<string>EKS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D542FFF7-0DEC-4499-BDEE-F7DE23B2D14E</key>
+		<string>https://ekuaisong.com/svn/eks_mobile_customer_ios_2.0</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>trunk/EKS1.0/EKS.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D542FFF7-0DEC-4499-BDEE-F7DE23B2D14E</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>D542FFF7-0DEC-4499-BDEE-F7DE23B2D14E</key>
+		<string>https://ekuaisong.com/svn/eks_mobile_customer_ios_2.0</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://ekuaisong.com/svn/eks_mobile_customer_ios_2.0/trunk/EKS1.0/EKS.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D542FFF7-0DEC-4499-BDEE-F7DE23B2D14E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D542FFF7-0DEC-4499-BDEE-F7DE23B2D14E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

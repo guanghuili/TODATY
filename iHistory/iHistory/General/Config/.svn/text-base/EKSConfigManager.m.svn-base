@@ -1,0 +1,129 @@
+//
+//  ConfigManager.m
+//  EKS
+//
+//  Created by ligh on 14/12/25.
+//
+//
+
+#define ConfigModelKey @"ConfigModelKey"
+
+
+#import "EKSConfigManager.h"
+#import "ITTMaskActivityView.h"
+
+@interface EKSConfigManager()
+{
+
+    ConfigModel *_configModel;
+}
+@end
+
+@implementation EKSConfigManager
+
+
+static id instance;
++ (id)defaultConfigManager
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[self alloc] init];
+    });
+    
+    return instance;
+}
+
+-(void)dealloc
+{
+    RELEASE_SAFELY(_configModel);
+    [super dealloc];
+}
+
+-(void)configInitIfNeed:(ConfigInitBlock)initBlock showActivityView:(BOOL)isShow
+{
+    //如果不需要检测配置 则使用本地配置信息
+    if (![self isNeedDetectConfig])
+    {
+        initBlock(_configModel);
+        return;
+    }
+    
+    
+    ITTMaskActivityView *activityView = nil;
+    if (isShow)
+    {
+        activityView =  [ITTMaskActivityView viewFromXIB];
+        [activityView showInView:KAPP_Delegate.window];
+        
+    }
+    
+    
+    ConfigModel *configModel = (ConfigModel *)[[DataCacheManager sharedManager] getCachedObjectByKey:ConfigModelKey];
+    NSString *initVersion = [NSString isBlankString:configModel.version] ? @"" : configModel.version;
+    
+    [ConfigInitRequest requestWithParameters:@{@"initVersion":initVersion} withIndicatorView:nil onRequestFinished:^(ITTBaseDataRequest *request)
+     {
+         if (request.isSuccess)
+         {
+             ConfigModel *newConfigModel = request.resultDic[KRequestResultDataKey];
+             
+             if(newConfigModel.isUpdate.boolValue)
+             {
+                 _configModel = [newConfigModel retain];
+                 [[DataCacheManager sharedManager] addObject:newConfigModel forKey:ConfigModelKey];
+                 
+                 if(initBlock)
+                     initBlock(newConfigModel);
+                 
+             }else
+             {
+                 if (configModel)
+                 {
+                     _configModel = [configModel retain];
+                 }
+                 
+                 if(initBlock)
+                     initBlock(configModel);
+             }
+             
+         }else
+         {
+             if(initBlock && configModel)
+                 initBlock(configModel);
+         }
+         
+         [activityView hide];
+     } onRequestFailed:^(ITTBaseDataRequest *request)
+     {
+         [activityView hide];
+     }];
+    
+}
+
+-(void)configInitIfNeed:(ConfigInitBlock)initBlock
+{
+    [self configInitIfNeed:initBlock showActivityView:NO];
+}
+
+-(BOOL)isNeedDetectConfig
+{
+    if (!_configModel)
+    {
+        return YES;
+    }
+    
+    ConfigModel *configModel = (ConfigModel *)[[DataCacheManager sharedManager] getCachedObjectByKey:ConfigModelKey];
+    if (!configModel)
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
+-(void)disableMemoryConfig
+{
+    RELEASE_SAFELY(_configModel);
+}
+
+@end

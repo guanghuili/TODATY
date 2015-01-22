@@ -1,0 +1,18 @@
+//
+//  SubmitOrderRequest.m
+//  EKS
+//
+//  Created by ligh on 14/12/5.
+//
+//
+
+#import "SubmitOrderRequest.h"
+
+@implementation SubmitOrderRequest
+
+-(NSString *)getRequestUrl
+{
+    return @"/u/onlineorder/create";
+}
+
+@end

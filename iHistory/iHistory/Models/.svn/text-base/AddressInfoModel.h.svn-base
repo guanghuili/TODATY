@@ -1,0 +1,23 @@
+//
+//  AddressInfoModel.h
+//  EKS
+//
+//  Created by ligh on 14/12/11.
+//
+//
+
+#import "BaseModelObject.h"
+
+//用户常用地址
+@interface AddressInfoModel : BaseModelObject
+
+@property (retain,nonatomic) NSString *addressId;//地址Id
+@property (retain,nonatomic) NSString *linkmanName;//发件人姓名
+@property (retain,nonatomic) NSString *linkmanPhone;//发件人手机号码
+@property (retain,nonatomic) NSString *addressMain;//发件地址(主要)
+@property (retain,nonatomic) NSString *addressDetail;//发件地址(详细)
+@property (retain,nonatomic) NSString *addressCoordinate;//true	发件人地址坐标（坐标数据格式为“纬度,经度”）。
+
+@property (assign,nonatomic) BOOL checked;//添加为常用地址时 改地址是否被选择
+
+@end
